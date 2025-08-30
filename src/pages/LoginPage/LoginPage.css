@@ -1,0 +1,75 @@
+body {
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+}
+
+.form-card {
+    background: #1c1c1c;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(248, 68, 13, 0.2);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-card h3 {
+    color: #eb5611;
+    /* dorado sobrio */
+    font-weight: bold;
+}
+
+.form-label {
+    color: #ddd;
+}
+
+.form-control {
+    background: #2c2c2c;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+.form-control:focus {
+    background: #2c2c2c;
+    border-color: #eb5611;
+    box-shadow: 0 0 5px #eb5611;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #eb5611;
+    border: none;
+    color: #121212;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #eb5611;
+    color: #121212;
+}
+
+a {
+    color: #eb5611;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    width: 220px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(245, 69, 16, 0.5));
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
