@@ -9,6 +9,27 @@ import { signOut } from 'firebase/auth';
 import './AuxiliaresPage.css';
 import logo from '../../assets/Logo_ALAGID.png';
 
+function calcularEdad(fecha) {
+    /*
+    const fechaActual = Temporal.Now.zonedDateTimeISO('America/Bogota')
+    const plainDate = Temporal.PlainDate.from(fecha);
+    const fechaNacimiento = new Temporal.PlainDateTime(plainDate.year,plainDate.month, plainDate.day)
+    const duration = fechaActual.until(fechaNacimiento)
+    
+    return duration.years
+    */
+    const hoy = new Date();
+  const cumpleanos = new Date(fecha); // Asegúrate de que la fecha está en un formato que Date pueda interpretar (ej: YYYY-MM-DD)
+  let edad = hoy.getFullYear() - cumpleanos.getFullYear();
+  const mes = hoy.getMonth() - cumpleanos.getMonth();
+
+  if (mes < 0 || (mes === 0 && hoy.getDate() < cumpleanos.getDate())) {
+    edad--; // Resta un año si el cumpleaños aún no ha pasado este año
+  }
+
+  return edad;
+}
+
 function AuxiliaresPage() {
     const navigate = useNavigate();
     const [auxiliares, setAuxiliares] = useState([]);
@@ -153,6 +174,7 @@ function AuxiliaresPage() {
                                     <th>Teléfono</th>
                                     <th>Email</th>
                                     <th>Fecha Nacimiento</th>
+                                    <th>Edad</th>
                                     <th>Sexo</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
@@ -167,6 +189,7 @@ function AuxiliaresPage() {
                                         <td>{aux.telefono}</td>
                                         <td>{aux.email}</td>
                                         <td>{aux.fechaNacimiento || '-'}</td>
+                                        <td>{calcularEdad(aux.fechaNacimiento)}</td>
                                         <td>{aux.sexo || '-'}</td>
                                         <td>{aux.estado || 'Pendiente'}</td>
                                         <td>

@@ -1,20 +1,16 @@
-// imports...
 import { useNavigate } from 'react-router-dom';
-import { Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import logo from '../../assets/Logo_ALAGID.png';
 import userDefault from '../../assets/user.png'; 
-import './DashboardPage.css';
 import Swal from 'sweetalert2';
-//import { div } from 'framer-motion/client';
-import Navbar from '../components/NavbarPage';
-import Footer from '../components/FooterPage';
 
 
-function DashboardPage() {
+
+function NavbarPage() {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
@@ -24,8 +20,8 @@ function DashboardPage() {
   // Agregamos el console.log para verificar qué foto se está usando
   console.log(
     user?.photoURL
-      ? `Usuario tiene foto: ${user.photoURL}`
-      : `Usuario SIN foto, se usará: ${userDefault}`
+      ? "Usuario tiene foto: ${user.photoURL}"
+      : "Usuario SIN foto, se usará: ${userDefault}"
   );
 
   const handleLogout = async () => {
@@ -61,7 +57,6 @@ function DashboardPage() {
       }
     }
   };
-
   return (
     <>
       {/* NAVBAR */}
@@ -106,35 +101,11 @@ function DashboardPage() {
       </Navbar>
 
 
- 
-      {/* CONTENIDO PRINCIPAL */}
-      <main className="main-content">
-        <div>
-          <img src={logo} alt="Logo_ALAGID" className="main-logo" />
-          <h1 className="welcome-title">Welcome to ALAGID System</h1>
-          <p className="welcome-text">
-            Manage your clients, services, and more efficiently!
-          </p>
+    
 
-          <p className="welcome-text">
-            <strong>Nombre:</strong> {user?.displayName || "Sin nombre"}
-          </p>
-          <p className="welcome-text">
-            <strong>Email:</strong> {user?.email || "Sin correo"}
-          </p>
-          <img
-            src={userPhoto}
-            alt="Foto de usuario"
-            className="main-logo"
-            style={{ maxWidth: '100px', borderRadius: '50%' }}
-          />
-        </div>
-      </main>
-
-      {/* FOOTER */}
-      <Footer />
+      
     </>
   );
 }
 
-export default DashboardPage;
+export default NavbarPage;
