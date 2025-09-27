@@ -15,3 +15,13 @@
     max-width: 400px;
     margin: 0 auto;
 } */
+
+.is-invalid {
+  border: 2px solid #dc3545;
+  background-color: #fff6f6;
+}
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
